@@ -1,0 +1,14 @@
+name: PufferPanel on GitHub
+on: [push]  # Runs when you push changes
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Docker
+        run: |
+          sudo apt update
+          sudo apt install docker.io -y
+          docker run -d -p 8080:8080 --name=pufferpanel pufferpanel/pufferpanel
+      - name: Keep it running
+        run: sleep 9999999
